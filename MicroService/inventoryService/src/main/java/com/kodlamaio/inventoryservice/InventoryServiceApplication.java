@@ -19,4 +19,8 @@ public class InventoryServiceApplication {
         return new ModelMapper();
     }
 
+    public ModelMapperService getModelMapperService(ModelMapper modelMapper){
+        return new ModelMapperManager(ModelMapper);
+    }
+
 }
