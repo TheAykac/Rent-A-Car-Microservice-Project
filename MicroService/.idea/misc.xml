@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/dicovery-server/pom.xml" />
         <option value="$PROJECT_DIR$/inventoryService/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
       </list>
     </option>
   </component>

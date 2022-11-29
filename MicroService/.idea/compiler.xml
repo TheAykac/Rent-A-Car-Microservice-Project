@@ -8,16 +8,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="dicovery-server" />
+        <module name="common" />
         <module name="inventoryService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common" target="17" />
       <module name="dicovery-server" target="17" />
       <module name="inventoryService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
       <module name="dicovery-server" options="-parameters" />
       <module name="inventoryService" options="-parameters" />
     </option>
