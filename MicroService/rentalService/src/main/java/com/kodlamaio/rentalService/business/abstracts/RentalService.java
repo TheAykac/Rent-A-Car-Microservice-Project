@@ -9,4 +9,6 @@ public interface RentalService {
 
 	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
 	UpdateRentalResponse update (UpdateRentalRequest updateRentalRequest);
+
+	void calculateTotalPrice(double dailyPrice,int rentedForDays);
 }

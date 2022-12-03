@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public interface CarService {
 
 	List<GetAllCarsResponse> getAll();
-	UpdateCarResponse updateCarStateForRental(String carId);
+	UpdateCarResponse updateCarStateForRental(String carId,int state);
 
 	CreateCarResponse add(CreateCarRequest request);
 	UpdateCarResponse update(UpdateCarRequest request, String id);

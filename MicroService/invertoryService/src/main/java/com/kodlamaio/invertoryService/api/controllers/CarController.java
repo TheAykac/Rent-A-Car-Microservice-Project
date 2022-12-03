@@ -17,12 +17,12 @@ public class CarController {
 
     private CarService carService;
 
-    @GetMapping("getall")
+    @GetMapping("/getAll")
     public List<GetAllCarsResponse> getAll() {
         return carService.getAll();
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public CreateCarResponse add(@RequestBody @Valid CreateCarRequest createCarRequest) {
         return carService.add(createCarRequest);
     }

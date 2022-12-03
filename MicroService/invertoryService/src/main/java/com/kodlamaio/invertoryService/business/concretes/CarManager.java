@@ -51,7 +51,6 @@ public class CarManager implements CarService {
 	@Override
 	public UpdateCarResponse update(UpdateCarRequest request, String id) {
 		checkIfCarExistsById(id);
-
 		Car car = mapper.forRequest().map(request, Car.class);
 		car.setId(id);
 		repository.save(car);
@@ -75,9 +74,9 @@ public class CarManager implements CarService {
 
 
 	@Override
-	public UpdateCarResponse updateCarStateForRental(String carId) {
+	public UpdateCarResponse updateCarStateForRental(String carId,int state) {
 		Car car = this.repository.findById(carId).get();
-		car.setState(3);
+		car.setState(state);
 		this.repository.save(car);
 		UpdateCarResponse updateCarResponse = this.mapper.forResponse().map(car,UpdateCarResponse.class);
 		return updateCarResponse;
