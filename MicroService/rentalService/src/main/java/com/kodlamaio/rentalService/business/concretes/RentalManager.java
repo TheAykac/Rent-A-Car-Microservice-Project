@@ -1,9 +1,5 @@
 package com.kodlamaio.rentalService.business.concretes;
 
-<<<<<<< HEAD
-import com.kodlamaio.common.events.PaymentCreatedEvent;
-=======
->>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
 import com.kodlamaio.common.events.RentalCreatedEvent;
 import com.kodlamaio.common.events.RentalUpdateEvent;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
@@ -33,27 +29,15 @@ public class RentalManager implements RentalService {
 	@Override
 	public CreateRentalResponse add(CreateRentalRequest createRentalRequest) {
 		carClientService.checkIfCarAvailable(createRentalRequest.getCarId());
-
 		Rental rental = modelMapperService.forRequest().map(createRentalRequest,Rental.class);
 		rental.setId(UUID.randomUUID().toString());
 		rental.setTotalPrice(createRentalRequest.getDailyPrice()*createRentalRequest.getRentedForDays());
-<<<<<<< HEAD
-
-=======
->>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
 		Rental rentalCreated = rentalRepository.save(rental);
-
 		RentalCreatedEvent rentalCreatedEvent = new RentalCreatedEvent();
 		rentalCreatedEvent.setCarId(rentalCreated.getCarId());
 		rentalCreatedEvent.setMessage("Rental Created");
+
 		this.rentalProducer.sendMessage(rentalCreatedEvent);
-
-		PaymentCreatedEvent paymentCreatedEvent = new PaymentCreatedEvent();
-		paymentCreatedEvent.setRentalId(rentalCreated.getId());
-		paymentCreatedEvent.setDailyPrice(rentalCreated.getDailyPrice());
-		paymentCreatedEvent.setRentedForDays(paymentCreatedEvent.getRentedForDays());
-		paymentCreatedEvent.setMessage("Success Payment");
-
 		CreateRentalResponse response = modelMapperService.forResponse().map(rental,CreateRentalResponse.class);
 		return response;
 	}
@@ -77,6 +61,19 @@ public class RentalManager implements RentalService {
 
 		UpdateRentalResponse updateRentalResponse = this.modelMapperService.forResponse().map(rental,UpdateRentalResponse.class);
 		return updateRentalResponse;
+	}
+	@Override
+	public double getTotalPrice(String id) {
+		return rentalRepository.findById(id).get().getTotalPrice();
+	}
+	@Override
+	public void setConditionByPayment(String id) {
+		Rental rental = this.rentalRepository.findById(id).get();
+		if (rental.getCondition()==1) {
+			rental.setCondition(2);
+		}
+		rentalRepository.save(rental);
+
 	}
 
 	@Override

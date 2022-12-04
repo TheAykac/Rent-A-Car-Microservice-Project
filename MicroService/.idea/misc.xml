@@ -11,10 +11,6 @@
         <option value="$PROJECT_DIR$/invertoryService/pom.xml" />
         <option value="$PROJECT_DIR$/rentalService/pom.xml" />
         <option value="$PROJECT_DIR$/payment-service/pom.xml" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/invoice-service/pom.xml" />
-=======
->>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
       </list>
     </option>
   </component>

@@ -25,4 +25,9 @@ public class RentalsController {
 	public UpdateRentalResponse update(@RequestBody UpdateRentalRequest updateRentalRequest){
 		return this.rentalService.update(updateRentalRequest);
 	}
+
+	@GetMapping("/totalpricebyid/{id}")
+	public double getTotalPrice(@PathVariable String id) {
+		return rentalService.getTotalPrice(id);
+	}
 }

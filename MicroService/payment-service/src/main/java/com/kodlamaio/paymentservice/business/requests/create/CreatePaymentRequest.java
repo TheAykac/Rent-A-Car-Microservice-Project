@@ -5,16 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreatePaymentRequest {
 
-<<<<<<< HEAD
+
     private String rentalId;
 
-=======
-    private String totalPrice;
->>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
+    private String cardNo;
+
+    private String cardHolder;
+
+    private int cvv;
+
+    private LocalDate cardDate;
+
+    private double balance;
+
+    private int status;
 }

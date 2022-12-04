@@ -19,24 +19,10 @@ public class PaymentConsumer {
             topics = "${spring.kafka.topic.name}"
             ,groupId = "${spring.kafka.consumer.group-id}"
     )
-    public void consume(PaymentCreatedEvent event){
+    @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "create")
+    public void consume(PaymentCreatedEvent event) {
         LOGGER.info(String.format("Order event received in stock service => %s", event.toString()));
-<<<<<<< HEAD
-        //rentalService.calculateTotalPrice(event.getDailyPrice(), event.getRentedForDays());
-=======
-        rentalService.
->>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
-
-
+        rentalService.setConditionByPayment(event.getRentalId());
         // save the order event into the database
     }
 }
-<<<<<<< HEAD
-/*
-* RENTAL
-* -DailyPrice, RentedForDays
-*
-*
-* */
-=======
->>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe

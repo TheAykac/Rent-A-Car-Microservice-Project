@@ -36,4 +36,7 @@ public class Rental {
 
 	@Column(name = "totalPrice")
 	private double totalPrice;
+
+	@Column(name = "condition")
+	private int condition;
 }
