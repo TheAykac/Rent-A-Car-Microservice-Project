@@ -12,6 +12,10 @@
     <file url="file://$PROJECT_DIR$/inventoryService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/invertoryService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/invertoryService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/invoice-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/invoice-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/payment-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/payment-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rentalService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rentalService/src/main/resources" charset="UTF-8" />
   </component>

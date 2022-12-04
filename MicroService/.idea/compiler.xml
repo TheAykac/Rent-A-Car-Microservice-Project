@@ -10,9 +10,11 @@
         <module name="apigateway" />
         <module name="inventoryService" />
         <module name="discovery-server" />
+        <module name="payment-service" />
         <module name="common" />
         <module name="invertoryService" />
         <module name="rentalService" />
+        <module name="invoice-service" />
         <module name="dicovery-server" />
       </profile>
     </annotationProcessing>
@@ -23,6 +25,8 @@
       <module name="discovery-server" target="17" />
       <module name="inventoryService" target="17" />
       <module name="invertoryService" target="17" />
+      <module name="invoice-service" target="17" />
+      <module name="payment-service" target="17" />
       <module name="rentalService" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -34,6 +38,8 @@
       <module name="discovery-server" options="-parameters" />
       <module name="inventoryService" options="-parameters" />
       <module name="invertoryService" options="-parameters" />
+      <module name="invoice-service" options="-parameters" />
+      <module name="payment-service" options="-parameters" />
       <module name="rentalService" options="-parameters" />
     </option>
   </component>
