@@ -21,15 +21,22 @@ public class PaymentConsumer {
     )
     public void consume(PaymentCreatedEvent event){
         LOGGER.info(String.format("Order event received in stock service => %s", event.toString()));
+<<<<<<< HEAD
         //rentalService.calculateTotalPrice(event.getDailyPrice(), event.getRentedForDays());
+=======
+        rentalService.
+>>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
 
 
         // save the order event into the database
     }
 }
+<<<<<<< HEAD
 /*
 * RENTAL
 * -DailyPrice, RentedForDays
 *
 *
 * */
+=======
+>>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe

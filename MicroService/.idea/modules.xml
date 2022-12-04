@@ -9,7 +9,10 @@
       <module fileurl="file://$PROJECT_DIR$/discovery-server/discovery-server.iml" filepath="$PROJECT_DIR$/discovery-server/discovery-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/inventoryService/inventoryService.iml" filepath="$PROJECT_DIR$/inventoryService/inventoryService.iml" />
       <module fileurl="file://$PROJECT_DIR$/invertoryService/invertoryService.iml" filepath="$PROJECT_DIR$/invertoryService/invertoryService.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/invoice-service/invoice-service.iml" filepath="$PROJECT_DIR$/invoice-service/invoice-service.iml" />
+=======
+>>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/rentalService/rentalService.iml" filepath="$PROJECT_DIR$/rentalService/rentalService.iml" />
     </modules>

@@ -1,6 +1,9 @@
 package com.kodlamaio.rentalService.business.concretes;
 
+<<<<<<< HEAD
 import com.kodlamaio.common.events.PaymentCreatedEvent;
+=======
+>>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
 import com.kodlamaio.common.events.RentalCreatedEvent;
 import com.kodlamaio.common.events.RentalUpdateEvent;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
@@ -34,7 +37,10 @@ public class RentalManager implements RentalService {
 		Rental rental = modelMapperService.forRequest().map(createRentalRequest,Rental.class);
 		rental.setId(UUID.randomUUID().toString());
 		rental.setTotalPrice(createRentalRequest.getDailyPrice()*createRentalRequest.getRentedForDays());
+<<<<<<< HEAD
 
+=======
+>>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
 		Rental rentalCreated = rentalRepository.save(rental);
 
 		RentalCreatedEvent rentalCreatedEvent = new RentalCreatedEvent();

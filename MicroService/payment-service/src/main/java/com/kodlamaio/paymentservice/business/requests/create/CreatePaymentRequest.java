@@ -11,6 +11,10 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class CreatePaymentRequest {
 
+<<<<<<< HEAD
     private String rentalId;
 
+=======
+    private String totalPrice;
+>>>>>>> e4bd1ba4ef4add7550e75eb3942277d857dffebe
 }
