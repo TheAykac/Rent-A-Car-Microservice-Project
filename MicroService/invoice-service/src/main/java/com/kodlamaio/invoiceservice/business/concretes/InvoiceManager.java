@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -18,27 +19,17 @@ public class InvoiceManager implements InvoiceService {
     private ModelMapperService modelMapperService;
     private InvoiceRepository invoiceRepository;
 
-    @Override
-    public List<GetAllInvoiceResponse> getAll() {
-        return null;
-    }
+
 
     @Override
     public CreateInvoiceResponse add(CreateInvoiceRequest createInvoiceRequest) {
 
         Invoice invoice = this.modelMapperService.forRequest().map(createInvoiceRequest, Invoice.class);
-        invoice.setId(0);
-
+        invoice.setId(UUID.randomUUID().toString());
+        this.invoiceRepository.save(invoice);
         CreateInvoiceResponse createInvoiceResponse = this.modelMapperService.forResponse().map(invoice,CreateInvoiceResponse.class);
         return createInvoiceResponse;
     }
 
-    @Override
-    public void createAndAddInvoice(String rentalId, String paymentId) {
 
-        CreateInvoiceRequest createInvoiceRequest = new CreateInvoiceRequest();
-        createInvoiceRequest.setRentalCarId(rentalId);
-        createInvoiceRequest.setPaymentId(paymentId);
-
-    }
 }

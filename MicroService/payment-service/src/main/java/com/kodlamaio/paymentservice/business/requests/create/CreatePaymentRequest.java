@@ -1,5 +1,6 @@
 package com.kodlamaio.paymentservice.business.requests.create;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,17 +14,9 @@ import java.time.LocalDate;
 public class CreatePaymentRequest {
 
 
+    @JsonIgnore
+    private double totalPrice;
+
+    @JsonIgnore
     private String rentalId;
-
-    private String cardNo;
-
-    private String cardHolder;
-
-    private int cvv;
-
-    private LocalDate cardDate;
-
-    private double balance;
-
-    private int status;
 }

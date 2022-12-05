@@ -7,9 +7,9 @@ import com.kodlamaio.invoiceservice.business.responses.GetAllInvoiceResponse;
 import java.util.List;
 
 public interface InvoiceService {
-    List<GetAllInvoiceResponse> getAll();
+
 
     CreateInvoiceResponse add(CreateInvoiceRequest createInvoiceRequest);
 
-    void createAndAddInvoice(String rentalId, String paymentId);
+
 }

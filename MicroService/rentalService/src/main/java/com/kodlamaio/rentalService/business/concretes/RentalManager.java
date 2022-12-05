@@ -63,18 +63,14 @@ public class RentalManager implements RentalService {
 		return updateRentalResponse;
 	}
 	@Override
-	public double getTotalPrice(String id) {
-		return rentalRepository.findById(id).get().getTotalPrice();
-	}
-	@Override
-	public void setConditionByPayment(String id) {
-		Rental rental = this.rentalRepository.findById(id).get();
-		if (rental.getCondition()==1) {
-			rental.setCondition(2);
-		}
-		rentalRepository.save(rental);
+	public double getTotalPrice(String rentalId) {
+		double totalPrice;
+		Rental rental = this.rentalRepository.findById(rentalId).get();
+		totalPrice= rental.getTotalPrice();
+		return totalPrice;
 
 	}
+
 
 	@Override
 	public void createForInvoice(String rentalId) {

@@ -23,11 +23,12 @@ public class RentalsController {
 	}
 	@PutMapping("/update")
 	public UpdateRentalResponse update(@RequestBody UpdateRentalRequest updateRentalRequest){
-		return this.rentalService.update(updateRentalRequest);
-	}
+		return this.rentalService.update(updateRentalRequest);}
 
-	@GetMapping("/totalpricebyid/{id}")
-	public double getTotalPrice(@PathVariable String id) {
-		return rentalService.getTotalPrice(id);
+
+
+	@GetMapping("/getTotalPrice/{rentalId}")
+	public double getTotalPrice(@PathVariable String rentalId){
+		return rentalService.getTotalPrice(rentalId);
 	}
 }

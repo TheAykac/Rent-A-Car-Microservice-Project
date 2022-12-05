@@ -9,8 +9,8 @@ public interface RentalService {
 
 	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
 	UpdateRentalResponse update (UpdateRentalRequest updateRentalRequest);
-	double getTotalPrice(String id);
+	double getTotalPrice(String rentalId);
 	void calculateTotalPrice(double dailyPrice,int rentedForDays);
-	void setConditionByPayment(String id);
+
 	void createForInvoice(String rentalId);
 }
