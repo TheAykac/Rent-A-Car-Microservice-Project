@@ -77,6 +77,14 @@ public class RentalManager implements RentalService {
 	}
 
 	@Override
+	public void createForInvoice(String rentalId) {
+		Rental rental = this.rentalRepository.findById(rentalId).get();
+		double totalPrice = rental.getTotalPrice();
+		int totalDays= rental.getRentedForDays();
+	}
+
+
+	@Override
 	public void calculateTotalPrice(double dailyPrice, int rentedForDays) {
 		double totalPrice=dailyPrice*rentedForDays;
 	}

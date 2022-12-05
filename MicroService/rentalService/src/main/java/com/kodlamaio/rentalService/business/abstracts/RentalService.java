@@ -12,4 +12,5 @@ public interface RentalService {
 	double getTotalPrice(String id);
 	void calculateTotalPrice(double dailyPrice,int rentedForDays);
 	void setConditionByPayment(String id);
+	void createForInvoice(String rentalId);
 }
