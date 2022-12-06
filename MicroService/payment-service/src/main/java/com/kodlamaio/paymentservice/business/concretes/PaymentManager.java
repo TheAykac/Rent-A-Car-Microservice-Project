@@ -41,10 +41,11 @@ public class PaymentManager implements PaymentService {
         payment.setRentalId(makePayment.getRentalId());
         payment.setTotalPrice(totalPrice);
         payment.setId(UUID.randomUUID().toString());
-        this.paymentRepository.save(payment);
+
         if (makePayment.getCardSaveInformation().equals(CreditCardManager.CardSaveInformation.SAVE)){
             creditCardService.add(makePayment.getCreateCreditCardRequest());
         }
+        this.paymentRepository.save(payment);
         CreatePaymentResponse createPaymentResponse = this.modelMapperService.forResponse().map(payment, CreatePaymentResponse.class);
         return createPaymentResponse;
 

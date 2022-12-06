@@ -1,5 +1,6 @@
 package com.kodlamaio.invertoryService.kafka;
 
+
 import com.kodlamaio.common.events.RentalCreatedEvent;
 import com.kodlamaio.common.events.RentalUpdateEvent;
 import com.kodlamaio.invertoryService.business.abstracts.CarService;

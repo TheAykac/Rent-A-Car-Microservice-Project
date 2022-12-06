@@ -1,10 +1,5 @@
 package com.kodlamaio.invertoryService.business.concretes;
 
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.stereotype.Service;
-
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
 import com.kodlamaio.invertoryService.business.abstracts.ModelService;
 import com.kodlamaio.invertoryService.business.requests.create.CreateModelRequest;
@@ -15,15 +10,20 @@ import com.kodlamaio.invertoryService.business.responses.get.GetAllModelsRespons
 import com.kodlamaio.invertoryService.business.responses.update.UpdateModelResponse;
 import com.kodlamaio.invertoryService.dataAccess.ModelRepository;
 import com.kodlamaio.invertoryService.entities.Model;
-
+import com.kodlamaio.invertoryService.kafka.FilterProducer;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class ModelManager implements ModelService {
 
 	private ModelRepository modelRepository;
-	private ModelMapperService modelMapperService;
+    private ModelMapperService modelMapperService;
+    private FilterProducer filterProducer;
 	
 	@Override
 	public List<GetAllModelsResponse> getAll() {
@@ -38,7 +38,6 @@ public class ModelManager implements ModelService {
 		Model model = modelMapperService.forRequest().map(createModelRequest, Model.class);
 		model.setId(UUID.randomUUID().toString());
 		modelRepository.save(model);
-		
 		CreateModelResponse response = modelMapperService.forResponse().map(model, CreateModelResponse.class);
 		return response;
 	}

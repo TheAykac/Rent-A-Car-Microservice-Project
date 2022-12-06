@@ -1,6 +1,7 @@
 package com.kodlamaio.invertoryService.business.concretes;
 
 
+import com.kodlamaio.common.events.FilterCreatedEvent;
 import com.kodlamaio.common.utilities.exceptions.BusinessException;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
 import com.kodlamaio.invertoryService.business.abstracts.CarService;
@@ -11,6 +12,7 @@ import com.kodlamaio.invertoryService.business.responses.get.GetAllCarsResponse;
 import com.kodlamaio.invertoryService.business.responses.update.UpdateCarResponse;
 import com.kodlamaio.invertoryService.dataAccess.CarRespository;
 import com.kodlamaio.invertoryService.entities.Car;
+import com.kodlamaio.invertoryService.kafka.FilterProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ import java.util.UUID;
 public class CarManager implements CarService {
 	private final CarRespository repository;
 	private final ModelMapperService mapper;
-
+	private FilterProducer filterProducer;
 	@Override
 	public List<GetAllCarsResponse> getAll() {
 		List<Car> cars = repository.findAll();
@@ -45,6 +47,17 @@ public class CarManager implements CarService {
 		repository.save(car);
 		CreateCarResponse response = mapper.forResponse().map(car, CreateCarResponse.class);
 
+		FilterCreatedEvent filterCreatedEvent = new FilterCreatedEvent();
+		filterCreatedEvent.setPlate(car.getPlate());
+		filterCreatedEvent.setDailyPrice(car.getDailyPrice());
+		filterCreatedEvent.setState(car.getState());
+		filterCreatedEvent.setModelYear(car.getModelYear());
+		filterCreatedEvent.setModelname(car.getModel().getName());
+		filterCreatedEvent.setBrandName(car.getModel().getBrand().getName());
+		filterCreatedEvent.setBrandId(car.getModel().getBrand().getId());
+		filterCreatedEvent.setState(car.getState());
+
+		filterProducer.sendMessage(filterCreatedEvent);
 		return response;
 	}
 

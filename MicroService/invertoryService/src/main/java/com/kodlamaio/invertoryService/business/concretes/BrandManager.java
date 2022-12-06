@@ -1,10 +1,5 @@
 package com.kodlamaio.invertoryService.business.concretes;
 
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.stereotype.Service;
-
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
 import com.kodlamaio.invertoryService.business.abstracts.BrandService;
 import com.kodlamaio.invertoryService.business.requests.create.CreateBrandRequest;
@@ -15,32 +10,36 @@ import com.kodlamaio.invertoryService.business.responses.get.GetAllBrandsRespons
 import com.kodlamaio.invertoryService.business.responses.update.UpdateBrandResponse;
 import com.kodlamaio.invertoryService.dataAccess.BrandRepository;
 import com.kodlamaio.invertoryService.entities.Brand;
-
+import com.kodlamaio.invertoryService.kafka.FilterProducer;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class BrandManager implements BrandService {
 
-	private BrandRepository brandRepository;
-	private ModelMapperService modelMapperService;
-	
-	
-	@Override
-	public List<GetAllBrandsResponse> getAll() {
-		List<Brand> brands = brandRepository.findAll();
-		List<GetAllBrandsResponse> responses = brands.stream()
-				.map(brand->modelMapperService.forResponse().map(brand,GetAllBrandsResponse.class)).toList();
-		return responses;
-	}
+    private BrandRepository brandRepository;
+    private ModelMapperService modelMapperService;
 
-	@Override
+    private FilterProducer filterProducer;
+
+    @Override
+    public List<GetAllBrandsResponse> getAll() {
+        List<Brand> brands = brandRepository.findAll();
+        List<GetAllBrandsResponse> responses = brands.stream()
+                .map(brand -> modelMapperService.forResponse().map(brand, GetAllBrandsResponse.class)).toList();
+        return responses;
+    }
+
+    @Override
 	public CreateBrandResponse add(CreateBrandRequest createBrandRequest) {
 	
 		Brand brand = modelMapperService.forRequest().map(createBrandRequest, Brand.class);
 		brand.setId(UUID.randomUUID().toString());
 		brandRepository.save(brand);
-		
 		CreateBrandResponse createBrandResponse = modelMapperService.forResponse().map(brand, CreateBrandResponse.class);
 		return createBrandResponse;
 	}

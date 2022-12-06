@@ -9,12 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="apigateway" />
         <module name="inventoryService" />
-        <module name="discovery-server" />
         <module name="payment-service" />
+        <module name="discovery-server" />
         <module name="common" />
         <module name="rentalService" />
         <module name="invertoryService" />
         <module name="invoice-service" />
+        <module name="filter-service" />
         <module name="dicovery-server" />
       </profile>
     </annotationProcessing>
@@ -23,6 +24,7 @@
       <module name="common" target="17" />
       <module name="dicovery-server" target="17" />
       <module name="discovery-server" target="17" />
+      <module name="filter-service" target="17" />
       <module name="inventoryService" target="17" />
       <module name="invertoryService" target="17" />
       <module name="invoice-service" target="17" />
@@ -36,6 +38,7 @@
       <module name="common" options="-parameters" />
       <module name="dicovery-server" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
+      <module name="filter-service" options="-parameters" />
       <module name="inventoryService" options="-parameters" />
       <module name="invertoryService" options="-parameters" />
       <module name="invoice-service" options="-parameters" />

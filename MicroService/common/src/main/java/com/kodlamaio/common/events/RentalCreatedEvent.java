@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RentalCreatedEvent {
-
-	private String message;
-	private String carId;
+    private String message;
+    private String carId;
 }
