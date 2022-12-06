@@ -1,4 +1,4 @@
-package com.kodlamaio.invertoryService.business.responses.get;
+package com.kodlamaio.invertoryService.business.responses.getAll;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllBrandsResponse {
+public class GetAllBrandResponse {
 
 	private String id;
 	private String name;

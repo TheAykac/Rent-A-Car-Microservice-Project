@@ -1,5 +1,7 @@
 package com.kodlamaio.filterservice.api.controllers;
 
+import com.kodlamaio.common.utilities.result.DataResult;
+import com.kodlamaio.common.utilities.result.Result;
 import com.kodlamaio.filterservice.business.abstracts.FilterService;
 import com.kodlamaio.filterservice.business.requests.create.CreateBrandRequest;
 import com.kodlamaio.filterservice.business.requests.create.CreateCarRequest;
@@ -29,93 +31,93 @@ public class FilterControllers {
     private FilterService filterService;
 
     @GetMapping("/addForBrand")
-    public void addForBrand(CreateBrandRequest createBrandRequest) {
-        this.filterService.addForBrand(createBrandRequest);
+    public Result addForBrand(CreateBrandRequest createBrandRequest) {
+        return this.filterService.addForBrand(createBrandRequest);
     }
 
     @GetMapping("/addForCar")
-    public void addForCar(CreateCarRequest createCarRequest) {
-        this.filterService.addForCar(createCarRequest);
+    public Result addForCar(CreateCarRequest createCarRequest) {
+        return this.filterService.addForCar(createCarRequest);
     }
 
     @GetMapping("/addForModel")
-    public void addForModel(CreateModelRequest createModelRequest) {
-        this.filterService.addForModel(createModelRequest);
+    public Result addForModel(CreateModelRequest createModelRequest) {
+        return this.filterService.addForModel(createModelRequest);
     }
 
     @GetMapping("/updateForBrand")
-    public void updateForBrand(UpdateBrandRequest updateBrandRequest) {
-        this.filterService.updateForBrand(updateBrandRequest);
+    public Result updateForBrand(UpdateBrandRequest updateBrandRequest) {
+        return this.filterService.updateForBrand(updateBrandRequest);
     }
 
     @GetMapping("/updateForCar")
-    public void updateForCar(UpdateCarRequest updateCarRequest) {
-        this.filterService.updateForCar(updateCarRequest);
+    public Result updateForCar(UpdateCarRequest updateCarRequest) {
+        return this.filterService.updateForCar(updateCarRequest);
     }
 
     @GetMapping("/updateForModel")
-    public void updateForModel(UpdateModelRequest updateModelRequest) {
-        this.filterService.updateForModel(updateModelRequest);
+    public Result updateForModel(UpdateModelRequest updateModelRequest) {
+        return this.filterService.updateForModel(updateModelRequest);
     }
 
 
     @GetMapping("/getByBrandId")
-    public GetBrandResponse getByBrandId(String brandId) {
+    public DataResult<GetBrandResponse> getByBrandId(String brandId) {
         return this.filterService.getByBrandId(brandId);
     }
 
     @GetMapping("/getByModelId")
-    public GetModelResponse getByModelId(String modelId) {
+    public DataResult<GetModelResponse> getByModelId(String modelId) {
         return this.filterService.getByModelId(modelId);
     }
 
     @GetMapping("/getByCarId")
-    public GetCarResponse getByCarId(String carId) {
+    public DataResult<GetCarResponse> getByCarId(String carId) {
         return this.filterService.getByCarId(carId);
     }
 
     @GetMapping("/getAllBrand")
-    public List<GetAllBrandResponse> getAllBrand() {
+    public DataResult<List<GetAllBrandResponse>> getAllBrand() {
         return this.filterService.getAllBrand();
     }
 
     @GetMapping("/getAllCar")
-    public List<GetAllCarResponse> getAllCar() {
+    public DataResult<List<GetAllCarResponse>> getAllCar() {
         return this.filterService.getAllCar();
     }
 
     @GetMapping("/getAllModel")
-    public List<GetAllModelResponse> getAllModel() {
+    public DataResult<List<GetAllModelResponse>> getAllModel() {
         return this.filterService.getAllModel();
     }
 
     @GetMapping("/getFilterByBrandName")
-    public List<GetAllFilterResponse> getFilterByBrandName(String name) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByBrandName(String name) {
         return this.filterService.getFilterByBrandName(name);
     }
 
     @GetMapping("/getFilterByDailyPrice")
-    public List<GetAllFilterResponse> getFilterByDailyPrice(double dailyPrice) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByDailyPrice(double dailyPrice) {
         return this.filterService.getFilterByDailyPrice(dailyPrice);
     }
 
     @GetMapping("/getFilterByModelname")
-    public List<GetAllFilterResponse> getFilterByModelname(String modelName) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByModelname(String modelName) {
         return this.filterService.getFilterByModelname(modelName);
     }
 
     @GetMapping("/getFilterByDailyPriceGreaterThanEqual")
-    public List<GetAllFilterResponse> getFilterByDailyPriceGreaterThanEqual(double dailyPrice) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByDailyPriceGreaterThanEqual(double dailyPrice) {
         return this.filterService.getFilterByDailyPriceGreaterThanEqual(dailyPrice);
     }
 
     @GetMapping("/getFilterByDailyPriceLessThanEqual")
-    public List<GetAllFilterResponse> getFilterByDailyPriceLessThanEqual(double dailyPrice) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByDailyPriceLessThanEqual(double dailyPrice) {
         return this.filterService.getFilterByDailyPriceLessThanEqual(dailyPrice);
     }
 
     @GetMapping("/getFiltersByBrandNameOrModelname")
-    public List<GetAllFilterResponse> getFiltersByBrandNameOrModelname(String brandName, String modelName) {
+    public DataResult<List<GetAllFilterResponse>> getFiltersByBrandNameOrModelname(String brandName, String modelName) {
         return this.filterService.getFiltersByBrandNameOrModelname(brandName, modelName);
     }
 }

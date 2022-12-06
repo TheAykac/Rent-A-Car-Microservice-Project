@@ -1,6 +1,8 @@
 package com.kodlamaio.filterservice.business.abstracts;
 
 import com.kodlamaio.common.events.FilterCreatedEvent;
+import com.kodlamaio.common.utilities.result.DataResult;
+import com.kodlamaio.common.utilities.result.Result;
 import com.kodlamaio.filterservice.business.requests.create.CreateBrandRequest;
 import com.kodlamaio.filterservice.business.requests.create.CreateCarRequest;
 import com.kodlamaio.filterservice.business.requests.create.CreateModelRequest;
@@ -22,41 +24,41 @@ public interface FilterService {
     void filter(FilterCreatedEvent event);
 
     //Create Operations
-    void addForBrand(CreateBrandRequest createBrandRequest);
+    Result addForBrand(CreateBrandRequest createBrandRequest);
 
-    void addForCar(CreateCarRequest createCarRequest);
+    Result addForCar(CreateCarRequest createCarRequest);
 
-    void addForModel(CreateModelRequest createModelRequest);
+    Result addForModel(CreateModelRequest createModelRequest);
 
     // Update Operations
-    void updateForBrand(UpdateBrandRequest updateBrandRequest);
+    Result updateForBrand(UpdateBrandRequest updateBrandRequest);
 
-    void updateForCar(UpdateCarRequest updateCarRequest);
+    Result updateForCar(UpdateCarRequest updateCarRequest);
 
-    void updateForModel(UpdateModelRequest updateModelRequest);
+    Result updateForModel(UpdateModelRequest updateModelRequest);
 
 
-    GetBrandResponse getByBrandId(String brandId);
+    DataResult<GetBrandResponse> getByBrandId(String brandId);
 
-    GetModelResponse getByModelId(String modelId);
+    DataResult<GetModelResponse> getByModelId(String modelId);
 
-    GetCarResponse getByCarId(String carId);
+    DataResult<GetCarResponse> getByCarId(String carId);
 
-    List<GetAllBrandResponse> getAllBrand();
+    DataResult<List<GetAllBrandResponse>> getAllBrand();
 
-    List<GetAllCarResponse> getAllCar();
+    DataResult<List<GetAllCarResponse>> getAllCar();
 
-    List<GetAllModelResponse> getAllModel();
+    DataResult<List<GetAllModelResponse>> getAllModel();
 
-    List<GetAllFilterResponse> getFilterByBrandName(String name);
+    DataResult<List<GetAllFilterResponse>> getFilterByBrandName(String name);
 
-    List<GetAllFilterResponse> getFilterByDailyPrice(double dailyPrice);
+    DataResult<List<GetAllFilterResponse>> getFilterByDailyPrice(double dailyPrice);
 
-    List<GetAllFilterResponse> getFilterByModelname(String modelName);
+    DataResult<List<GetAllFilterResponse>> getFilterByModelname(String modelName);
 
-    List<GetAllFilterResponse> getFilterByDailyPriceGreaterThanEqual(double dailyPrice);
+   DataResult<List<GetAllFilterResponse>> getFilterByDailyPriceGreaterThanEqual(double dailyPrice);
 
-    List<GetAllFilterResponse> getFilterByDailyPriceLessThanEqual(double dailyPrice);
+   DataResult<List<GetAllFilterResponse>> getFilterByDailyPriceLessThanEqual(double dailyPrice);
 
-    List<GetAllFilterResponse> getFiltersByBrandNameOrModelname(String brandName, String modelName);
+   DataResult<List<GetAllFilterResponse>> getFiltersByBrandNameOrModelname(String brandName, String modelName);
 }

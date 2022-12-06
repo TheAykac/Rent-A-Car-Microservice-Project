@@ -2,6 +2,11 @@ package com.kodlamaio.filterservice.business.concretes;
 
 import com.kodlamaio.common.events.FilterCreatedEvent;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
+import com.kodlamaio.common.utilities.messages.BusinessMessage;
+import com.kodlamaio.common.utilities.result.DataResult;
+import com.kodlamaio.common.utilities.result.Result;
+import com.kodlamaio.common.utilities.result.SuccessDataResult;
+import com.kodlamaio.common.utilities.result.SuccessResult;
 import com.kodlamaio.filterservice.business.abstracts.FilterService;
 import com.kodlamaio.filterservice.business.requests.create.CreateBrandRequest;
 import com.kodlamaio.filterservice.business.requests.create.CreateCarRequest;
@@ -32,127 +37,133 @@ public class FilterManager implements FilterService {
     private ModelMapperService modelMapperService;
 
     @Override
-    public void addForBrand(CreateBrandRequest createBrandRequest) {
+    public Result addForBrand(CreateBrandRequest createBrandRequest) {
         Filter filter = this.modelMapperService.forRequest().map(createBrandRequest, Filter.class);
         this.filterRepository.save(filter);
+        return new SuccessResult(BusinessMessage.GlobalMessages.DATA_ADDED_SUCCESSFULLY);
     }
 
     @Override
-    public void addForCar(CreateCarRequest createCarRequest) {
+    public Result addForCar(CreateCarRequest createCarRequest) {
         Filter filter = this.modelMapperService.forRequest().map(createCarRequest, Filter.class);
         this.filterRepository.save(filter);
+        return new SuccessResult(BusinessMessage.GlobalMessages.DATA_ADDED_SUCCESSFULLY);
 
     }
 
     @Override
-    public void addForModel(CreateModelRequest createModelRequest) {
+    public Result addForModel(CreateModelRequest createModelRequest) {
         Filter filter = this.modelMapperService.forRequest().map(createModelRequest, Filter.class);
         this.filterRepository.save(filter);
+        return new SuccessResult(BusinessMessage.GlobalMessages.DATA_ADDED_SUCCESSFULLY);
     }
 
     @Override
-    public void updateForBrand(UpdateBrandRequest updateBrandRequest) {
+    public Result updateForBrand(UpdateBrandRequest updateBrandRequest) {
         Filter filter = this.modelMapperService.forRequest().map(updateBrandRequest, Filter.class);
         this.filterRepository.save(filter);
+        return new SuccessResult(BusinessMessage.GlobalMessages.DATA_UPDATED_SUCCESSFULLY);
     }
 
     @Override
-    public void updateForCar(UpdateCarRequest updateCarRequest) {
+    public Result updateForCar(UpdateCarRequest updateCarRequest) {
         Filter filter = this.modelMapperService.forRequest().map(updateCarRequest, Filter.class);
         this.filterRepository.save(filter);
+        return new SuccessResult(BusinessMessage.GlobalMessages.DATA_UPDATED_SUCCESSFULLY);
 
     }
 
     @Override
-    public void updateForModel(UpdateModelRequest updateModelRequest) {
+    public Result updateForModel(UpdateModelRequest updateModelRequest) {
         Filter filter = this.modelMapperService.forRequest().map(updateModelRequest, Filter.class);
         this.filterRepository.save(filter);
+        return new SuccessResult(BusinessMessage.GlobalMessages.DATA_UPDATED_SUCCESSFULLY);
 
     }
 
     @Override
-    public GetBrandResponse getByBrandId(String brandId) {
+    public DataResult<GetBrandResponse> getByBrandId(String brandId) {
         Filter filter = this.filterRepository.findById(brandId).get();
         GetBrandResponse getBrandResponse = this.modelMapperService.forResponse().map(filter, GetBrandResponse.class);
-        return getBrandResponse;
+        return  new SuccessDataResult(getBrandResponse,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public GetModelResponse getByModelId(String modelId) {
+    public DataResult<GetModelResponse> getByModelId(String modelId) {
         Filter filter = this.filterRepository.findById(modelId).get();
         GetModelResponse getModelResponse = this.modelMapperService.forResponse().map(filter, GetModelResponse.class);
-        return getModelResponse;
+        return  new SuccessDataResult(getModelResponse,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public GetCarResponse getByCarId(String carId) {
+    public DataResult<GetCarResponse> getByCarId(String carId) {
         Filter filter = this.filterRepository.findById(carId).get();
         GetCarResponse getCarResponse = this.modelMapperService.forResponse().map(filter, GetCarResponse.class);
-        return getCarResponse;
+        return new SuccessDataResult(getCarResponse,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllBrandResponse> getAllBrand() {
+    public DataResult<List<GetAllBrandResponse>> getAllBrand() {
         List<Filter> filters = this.filterRepository.findAll();
         List<GetAllBrandResponse> getAllBrandResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllBrandResponse.class)).collect(Collectors.toList());
-        return getAllBrandResponses;
+        return new SuccessDataResult<>(getAllBrandResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllCarResponse> getAllCar() {
+    public DataResult<List<GetAllCarResponse>> getAllCar() {
         List<Filter> filters = this.filterRepository.findAll();
         List<GetAllCarResponse> getAllCarResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filters, GetAllCarResponse.class)).collect(Collectors.toList());
-        return getAllCarResponses;
+        return new SuccessDataResult<>(getAllCarResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllModelResponse> getAllModel() {
+    public DataResult<List<GetAllModelResponse>> getAllModel() {
         List<Filter> filters = this.filterRepository.findAll();
         List<GetAllModelResponse> getAllModelResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllModelResponse.class)).collect(Collectors.toList());
-        return getAllModelResponses;
+        return new SuccessDataResult<>(getAllModelResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllFilterResponse> getFilterByBrandName(String name) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByBrandName(String name) {
         List<Filter> filters = this.filterRepository.getFilterByBrandName(name);
         List<GetAllFilterResponse> getAllFilterResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllFilterResponse.class)).collect(Collectors.toList());
-        return getAllFilterResponses;
+        return new SuccessDataResult<>(getAllFilterResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
 
     }
 
     @Override
-    public List<GetAllFilterResponse> getFilterByDailyPrice(double dailyPrice) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByDailyPrice(double dailyPrice) {
         List<Filter> filters = this.filterRepository.getFilterByDailyPrice(dailyPrice);
         List<GetAllFilterResponse> getAllFilterResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllFilterResponse.class)).collect(Collectors.toList());
-        return getAllFilterResponses;
+        return new SuccessDataResult<>(getAllFilterResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllFilterResponse> getFilterByModelname(String modelName) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByModelname(String modelName) {
         List<Filter> filters = this.filterRepository.getFilterByModelname(modelName);
         List<GetAllFilterResponse> getAllFilterResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllFilterResponse.class)).collect(Collectors.toList());
-        return getAllFilterResponses;
+        return new SuccessDataResult<>(getAllFilterResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllFilterResponse> getFilterByDailyPriceGreaterThanEqual(double dailyPrice) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByDailyPriceGreaterThanEqual(double dailyPrice) {
         List<Filter> filters = this.filterRepository.getFilterByDailyPriceGreaterThanEqual(dailyPrice);
         List<GetAllFilterResponse> getAllFilterResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllFilterResponse.class)).collect(Collectors.toList());
-        return getAllFilterResponses;
+        return new SuccessDataResult<>(getAllFilterResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllFilterResponse> getFilterByDailyPriceLessThanEqual(double dailyPrice) {
+    public DataResult<List<GetAllFilterResponse>> getFilterByDailyPriceLessThanEqual(double dailyPrice) {
         List<Filter> filters = this.filterRepository.getFilterByDailyPriceLessThanEqual(dailyPrice);
         List<GetAllFilterResponse> getAllFilterResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllFilterResponse.class)).collect(Collectors.toList());
-        return getAllFilterResponses;
+        return new SuccessDataResult<>(getAllFilterResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override
-    public List<GetAllFilterResponse> getFiltersByBrandNameOrModelname(String brandName, String modelName) {
+    public DataResult<List<GetAllFilterResponse>> getFiltersByBrandNameOrModelname(String brandName, String modelName) {
         List<Filter> filters = this.filterRepository.getFiltersByBrandNameOrModelname(brandName, modelName);
         List<GetAllFilterResponse> getAllFilterResponses = filters.stream().map(filter -> this.modelMapperService.forResponse().map(filter, GetAllFilterResponse.class)).collect(Collectors.toList());
-        return getAllFilterResponses;
+        return new SuccessDataResult<>(getAllFilterResponses,BusinessMessage.GlobalMessages.DATA_LISTED_SUCCESSFULLY);
     }
 
     @Override

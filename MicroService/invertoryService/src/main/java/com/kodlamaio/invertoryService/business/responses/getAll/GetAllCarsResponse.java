@@ -1,4 +1,4 @@
-package com.kodlamaio.invertoryService.business.responses.get;
+package com.kodlamaio.invertoryService.business.responses.getAll;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

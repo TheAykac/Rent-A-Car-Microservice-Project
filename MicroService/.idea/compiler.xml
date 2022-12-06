@@ -9,11 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="apigateway" />
         <module name="inventoryService" />
-        <module name="payment-service" />
         <module name="discovery-server" />
+        <module name="payment-service" />
         <module name="common" />
-        <module name="rentalService" />
         <module name="invertoryService" />
+        <module name="rentalService" />
         <module name="invoice-service" />
         <module name="filter-service" />
         <module name="dicovery-server" />
