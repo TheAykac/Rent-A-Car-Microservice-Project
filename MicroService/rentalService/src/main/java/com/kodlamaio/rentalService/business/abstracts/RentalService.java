@@ -1,5 +1,6 @@
 package com.kodlamaio.rentalService.business.abstracts;
 
+import com.kodlamaio.common.events.InvoiceCreatedEvent;
 import com.kodlamaio.rentalService.business.requests.update.UpdateRentalRequest;
 import com.kodlamaio.rentalService.business.responses.create.CreateRentalResponse;
 import com.kodlamaio.rentalService.business.requests.create.CreateRentalRequest;
@@ -10,7 +11,6 @@ public interface RentalService {
 	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
 	UpdateRentalResponse update (UpdateRentalRequest updateRentalRequest);
 	double getTotalPrice(String rentalId);
-	void calculateTotalPrice(double dailyPrice,int rentedForDays);
 
 	void createForInvoice(String rentalId);
 }

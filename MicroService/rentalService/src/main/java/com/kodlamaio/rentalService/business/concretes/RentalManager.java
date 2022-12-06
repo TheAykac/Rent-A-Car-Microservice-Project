@@ -1,5 +1,6 @@
 package com.kodlamaio.rentalService.business.concretes;
 
+import com.kodlamaio.common.events.InvoiceCreatedEvent;
 import com.kodlamaio.common.events.RentalCreatedEvent;
 import com.kodlamaio.common.events.RentalUpdateEvent;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
@@ -11,6 +12,7 @@ import com.kodlamaio.rentalService.business.responses.update.UpdateRentalRespons
 import com.kodlamaio.rentalService.client.CarClientService;
 import com.kodlamaio.rentalService.dataAccess.abstracts.RentalRepository;
 import com.kodlamaio.rentalService.entities.Rental;
+import com.kodlamaio.rentalService.kafka.InvoiceProducer;
 import com.kodlamaio.rentalService.kafka.RentalProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class RentalManager implements RentalService {
 	private ModelMapperService modelMapperService;
 	private RentalProducer rentalProducer;
 	private CarClientService carClientService;
+	private InvoiceProducer invoiceProducer;
+
 
 	@Override
 	public CreateRentalResponse add(CreateRentalRequest createRentalRequest) {
@@ -33,11 +37,22 @@ public class RentalManager implements RentalService {
 		rental.setId(UUID.randomUUID().toString());
 		rental.setTotalPrice(createRentalRequest.getDailyPrice()*createRentalRequest.getRentedForDays());
 		Rental rentalCreated = rentalRepository.save(rental);
+
 		RentalCreatedEvent rentalCreatedEvent = new RentalCreatedEvent();
 		rentalCreatedEvent.setCarId(rentalCreated.getCarId());
 		rentalCreatedEvent.setMessage("Rental Created");
 
+		InvoiceCreatedEvent invoiceCreatedEvent = new InvoiceCreatedEvent();
+		invoiceCreatedEvent.setRentalCarId(rentalCreated.getCarId());
+		invoiceCreatedEvent.setStartDate(rentalCreated.getDateStarted());
+		invoiceCreatedEvent.setRentalCarTotalPrice(rentalCreated.getTotalPrice());
+		invoiceCreatedEvent.setPriceOfDays(rentalCreated.getDailyPrice());
+		invoiceCreatedEvent.setTotalRentalDay(rentalCreated.getRentedForDays());
+		invoiceCreatedEvent.setMessage("InvoiceCreated");
+
+		this.invoiceProducer.sendMessage(invoiceCreatedEvent);
 		this.rentalProducer.sendMessage(rentalCreatedEvent);
+
 		CreateRentalResponse response = modelMapperService.forResponse().map(rental,CreateRentalResponse.class);
 		return response;
 	}
@@ -75,13 +90,12 @@ public class RentalManager implements RentalService {
 	@Override
 	public void createForInvoice(String rentalId) {
 		Rental rental = this.rentalRepository.findById(rentalId).get();
-		double totalPrice = rental.getTotalPrice();
-		int totalDays= rental.getRentedForDays();
-	}
+		InvoiceCreatedEvent invoiceCreatedEvent = new InvoiceCreatedEvent();
+		invoiceCreatedEvent.setRentalCarId(rental.getId());
+		invoiceCreatedEvent.setPriceOfDays(rental.getDailyPrice());
+		invoiceCreatedEvent.setStartDate(rental.getDateStarted());
+		invoiceCreatedEvent.setRentalCarTotalPrice(rental.getTotalPrice());
 
 
-	@Override
-	public void calculateTotalPrice(double dailyPrice, int rentedForDays) {
-		double totalPrice=dailyPrice*rentedForDays;
 	}
 }

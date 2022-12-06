@@ -30,11 +30,8 @@ public class CreateInvoiceRequest {
     private LocalDate startDate;
 
     @NotNull
-    private LocalDate finishDate;
-
-    @NotNull
     @Min(1)
-    private short totalRentalDay;
+    private int totalRentalDay;
 
     @NotNull
     @Min(0)
@@ -49,7 +46,5 @@ public class CreateInvoiceRequest {
     private String rentalCarId;
 
 
-    @NotNull
-    @Min(1)
-    private String paymentId;
+
 }

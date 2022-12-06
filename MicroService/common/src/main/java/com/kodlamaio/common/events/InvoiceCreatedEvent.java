@@ -14,13 +14,14 @@ public class InvoiceCreatedEvent {
 
     private LocalDate startDate;
 
-    private short totalRentalDay;
+    private int totalRentalDay;
 
     private double priceOfDays;
 
     private double rentalCarTotalPrice;
 
     private String rentalCarId;
+    private String message;
 
-    private String paymentId;
+
 }

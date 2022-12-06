@@ -15,7 +15,7 @@ public class GetAllInvoiceResponse {
     private Date creationDate;
     private LocalDate startDate;
     private LocalDate finishDate;
-    private short totalRentalDay;
+    private int totalRentalDay;
     private double priceOfDays;
     private double rentalCarTotalPrice;
     private int rentalCarId;

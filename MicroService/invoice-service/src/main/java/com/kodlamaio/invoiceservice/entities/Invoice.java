@@ -18,7 +18,6 @@ import java.util.Date;
 @Table(name = "invoices")
 public class Invoice {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "invoiceId")
     private String id;
 
@@ -33,11 +32,8 @@ public class Invoice {
     @Column(name = "startDate")
     private LocalDate startDate;
 
-    @Column(name = "finishDate")
-    private LocalDate finishDate;
-
     @Column(name = "totalRentalDay")
-    private short totalRentalDay;
+    private int totalRentalDay;
 
     @Column(name = "priceOfDays")
     private double priceOfDays;
@@ -48,6 +44,5 @@ public class Invoice {
     @JoinColumn(name = "rentalId")
     private String  rentalId;
 
-    @JoinColumn(name = "paymentId")
-    private String paymentId;
+
 }

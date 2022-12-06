@@ -10,7 +10,6 @@ import com.kodlamaio.paymentservice.business.responses.create.CreatePaymentRespo
 import com.kodlamaio.paymentservice.client.PaymentClientService;
 import com.kodlamaio.paymentservice.dataAccess.PaymentRepository;
 import com.kodlamaio.paymentservice.entities.Payment;
-import com.kodlamaio.paymentservice.kafka.PaymentProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class PaymentManager implements PaymentService {
 
     private PaymentRepository paymentRepository;
     private ModelMapperService modelMapperService;
-    private PaymentProducer paymentProducer;
+
     private CreditCardService creditCardService;
     private PaymentClientService paymentClientService;
 
