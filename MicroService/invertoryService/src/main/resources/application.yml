@@ -1,0 +1,8 @@
+spring:
+    application:
+        name: stock
+    cloud:
+        config:
+            profile: dev
+    config:
+        import: configserver:http://localhost:8888

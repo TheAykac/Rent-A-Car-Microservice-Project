@@ -12,8 +12,8 @@
         <module name="discovery-server" />
         <module name="payment-service" />
         <module name="common" />
-        <module name="invertoryService" />
         <module name="rentalService" />
+        <module name="invertoryService" />
         <module name="invoice-service" />
         <module name="filter-service" />
         <module name="dicovery-server" />
