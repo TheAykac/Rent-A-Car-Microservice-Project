@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/MicroService/apigateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/apigateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/config-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/config-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/discovery-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/discovery-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/filter-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/filter-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/invertoryService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/invertoryService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/invoice-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/invoice-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/payment-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/payment-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/rentalService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MicroService/rentalService/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

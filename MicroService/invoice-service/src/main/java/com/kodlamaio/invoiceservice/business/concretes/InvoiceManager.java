@@ -51,7 +51,8 @@ public class InvoiceManager implements InvoiceService {
         createInvoiceRequest.setRentalCarTotalPrice(rentalCarTotalPrice);
         createInvoiceRequest.setRentalCarId(rentalCarId);
         createInvoiceRequest.setInvoiceNo(generateCode());
-        add(createInvoiceRequest);
+        Invoice i̇nvoice = this.modelMapperService.forRequest().map(createInvoiceRequest,Invoice.class);
+        this.invoiceRepository.save(i̇nvoice);
     }
 
     private String generateCode() {

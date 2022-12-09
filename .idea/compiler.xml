@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="apigateway" />
+        <module name="config-service" />
+        <module name="discovery-server" />
+        <module name="payment-service" />
+        <module name="common" />
+        <module name="invertoryService" />
+        <module name="rentalService" />
+        <module name="invoice-service" />
+        <module name="filter-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="apigateway" target="17" />
+      <module name="common" target="17" />
+      <module name="config-service" target="17" />
+      <module name="discovery-server" target="17" />
+      <module name="filter-service" target="17" />
+      <module name="invertoryService" target="17" />
+      <module name="invoice-service" target="17" />
+      <module name="payment-service" target="17" />
+      <module name="rentalService" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="apigateway" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="config-service" options="-parameters" />
+      <module name="discovery-server" options="-parameters" />
+      <module name="filter-service" options="-parameters" />
+      <module name="invertoryService" options="-parameters" />
+      <module name="invoice-service" options="-parameters" />
+      <module name="payment-service" options="-parameters" />
+      <module name="rentalService" options="-parameters" />
+    </option>
+  </component>
+</project>
