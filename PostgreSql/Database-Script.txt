@@ -1,0 +1,85 @@
+CREATE TABLE IF NOT EXISTS public.rentals
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    car_id character varying(255) COLLATE pg_catalog."default",
+    daily_price double precision,
+    date_started date,
+    rented_for_days integer,
+    total_price double precision,
+    CONSTRAINT rentals_pkey PRIMARY KEY (id)
+);
+END;
+
+CREATE TABLE IF NOT EXISTS public.credit_cards
+(
+    credit_card_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    card_cvv character varying(255) COLLATE pg_catalog."default",
+    card_expiration_date character varying(255) COLLATE pg_catalog."default",
+    card_number character varying(255) COLLATE pg_catalog."default",
+    card_owner character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT credit_cards_pkey PRIMARY KEY (credit_card_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.payments
+(
+    payment_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    rental_id character varying(255) COLLATE pg_catalog."default",
+    total_price double precision,
+    CONSTRAINT payments_pkey PRIMARY KEY (payment_id)
+);
+END;
+
+CREATE TABLE IF NOT EXISTS public.invoices
+(
+    invoice_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    creation_date timestamp without time zone,
+    invoice_no character varying(255) COLLATE pg_catalog."default",
+    price_of_days double precision,
+    rental_car_total_price double precision,
+    rental_id character varying(255) COLLATE pg_catalog."default",
+    start_date date,
+    total_rental_day integer,
+    CONSTRAINT invoices_pkey PRIMARY KEY (invoice_id)
+);
+END;
+
+CREATE TABLE IF NOT EXISTS public.brands
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    name character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT brands_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.cars
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    daily_price character varying(255) COLLATE pg_catalog."default",
+    model_year integer,
+    plate character varying(255) COLLATE pg_catalog."default",
+    state integer,
+    model_id character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT cars_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.models
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    name character varying(255) COLLATE pg_catalog."default",
+    brand_id character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT models_pkey PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.cars
+    ADD CONSTRAINT fkrwe6b2vd08hb4gnst223xsna4 FOREIGN KEY (model_id)
+    REFERENCES public.models (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.models
+    ADD CONSTRAINT fk95s72g5hnsl3o0bqeuhnokdxu FOREIGN KEY (brand_id)
+    REFERENCES public.brands (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+END;
