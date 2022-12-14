@@ -11,7 +11,7 @@
 ``` Backend Kodları İçin Tıklayınız: ```
 <b><h2> :star: Click for Database Script Codes: :point_right: <a href="https://github.com/TheAykac/Rent-A-Car-Microservice-Project/blob/main/PostgreSql/Database-Script.txt">SCRIPT CODE</a> :point_left: </h2></b>
 ``` Veritabanı Script Kodları İçin Tıklayınız: ```
----
+
 ![image](https://user-images.githubusercontent.com/101461108/207581512-58f27355-0389-45e2-a867-afa7756642b3.png)
 
 ---
